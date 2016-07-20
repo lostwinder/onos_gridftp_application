@@ -46,7 +46,6 @@ public class GridftpWebResource extends AbstractWebResource {
      * @return 200 OK
      */
     @GET
-    @Path("")
     public Response getGreeting() {
         ObjectNode node = mapper().createObjectNode().put("hello", "world");
         return ok(node).build();
