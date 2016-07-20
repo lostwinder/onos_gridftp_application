@@ -25,4 +25,8 @@ public class GridftpAppInfo {
     public String ipAddrPort() {
         return new StringBuilder().append(ipAddr).append(":").append(port).toString();
     }
+
+    public String appInfoString() {
+        return new StringBuilder().append(username).append(":").append(filename).append(":").append(direction).toString();
+    }
 }

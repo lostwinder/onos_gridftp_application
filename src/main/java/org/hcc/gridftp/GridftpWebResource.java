@@ -37,7 +37,7 @@ import static org.onlab.util.Tools.nullIsNotFound;
 /**
  * Manage the mapping between ip/port and GridFTP file transfer application level info.
  */
-@Path("gridftp")
+@Path("store")
 public class GridftpWebResource extends AbstractWebResource {
 
     /**
@@ -46,6 +46,7 @@ public class GridftpWebResource extends AbstractWebResource {
      * @return 200 OK
      */
     @GET
+    @Path("test")
     public Response getGreeting() {
         ObjectNode node = mapper().createObjectNode().put("hello", "world");
         return ok(node).build();
@@ -59,14 +60,17 @@ public class GridftpWebResource extends AbstractWebResource {
       * @return 200 OK
       */
     @GET
-    @Produces(MediaType.APPLICATION_JSON)
+    //@Produces(MediaType.APPLICATION_JSON)
     @Path("{ipAddr}/{port}")
     public Response queryApplicationLevelInfo(@PathParam("ipAddr") String ipAddr,
                                               @PathParam("port") String port) {
         GridftpService service = get(GridftpService.class);
         final GridftpAppInfo appInfo = service.getAppLevelInfo(ipAddr, port);
-        final ObjectNode root = codec(GridftpAppInfo.class).encode(appInfo, this);
-        return Response.ok(root).build();
+        //TODO: make codec for GridftpAppInfo class
+        //final ObjectNode root = codec(GridftpAppInfo.class).encode(appInfo, this);
+        //return Response.ok(root).build();
+        ObjectNode node = mapper().createObjectNode().put("appInfo", appInfo.appInfoString());
+        return ok(node).build();
     }
 
     /**

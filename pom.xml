@@ -35,7 +35,7 @@
         <onos.app.url>http://hcc.unl.edu</onos.app.url>
         <onos.app.readme>ONOS GridFTP traffic management application</onos.app.readme>
 
-        <web.context>/onos/v1/</web.context>
+        <web.context>/onos/v1/gridftp</web.context>
         <api.version>1.0.0</api.version>
         <api.title>ONOS GridFTP REST API</api.title>
         <api.description>

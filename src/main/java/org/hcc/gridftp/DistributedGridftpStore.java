@@ -61,8 +61,11 @@ public class DistributedGridftpStore extends AbstractStore implements GridftpSto
         String key = new StringBuilder().append(ipAddr).append(":").append(port).toString();
         Versioned<GridftpAppInfo> appInfo = gridftpAppInfoDict.get(key);
         if (appInfo != null) {
+            log.debug("appInfo is not null");
+            log.debug(appInfo.value().appInfoString());
             return appInfo.value();
         } else {
+            log.debug("appInfo is null");
             return null;
         }
 
